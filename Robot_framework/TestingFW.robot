@@ -5,8 +5,8 @@ Library           JSONLibrary
 Library           Collections
 
 *** Variables ***
-${COLLECTION}     PostmanCollections/FakeRESTApi.Web V1.postman_collection.json
-${ENVIRONMENT}    PostmanCollections/FakeRestAPI.postman_environment.json
+${COLLECTION}     PostmanCollections/Patient Service.postman_collection.json
+${ENVIRONMENT}    PostmanCollections/OncoConnect.postman_environment.json
 ${REPORT_PATH}    Report/HTML/report.html
 ${JSON_REPORT_PATH}    Report/JSON/newman_report.json
 
