@@ -31,22 +31,17 @@ async function setDynamicFields() {
     const collectionResponse = await fetch(`${jsonHostBaseUrl}/collection`);
     const environmentResponse = await fetch(`${jsonHostBaseUrl}/environment`);
     const runResponse = await fetch(`${jsonHostBaseUrl}/run`);
-    const skippedTestsResponse = await fetch(`${jsonHostBaseUrl}/skippedTests`);
 
     const collectionData = await collectionResponse.json();
     const environmentData = environmentResponse.ok
     ? await environmentResponse.json()
     : [];
     const runData = await runResponse.json();
-    const skippedTestsData = skippedTestsResponse.ok
-      ? await skippedTestsResponse.json()
-      : [];
 
     return {
       collections: collectionData,
       environment: environmentData,
       run: runData,
-      skippedTests: skippedTestsData,
     };
   };
 
@@ -59,7 +54,6 @@ async function setDynamicFields() {
     const executions = jsonData.run.executions;
     const environment = jsonData.environment;
     const runFailures = jsonData.run.failures;
-    const skipped = jsonData.skippedTests;
 
     document.title = collectionInfo.name + " Report";
     document.querySelector("#summary-header").innerHTML =
@@ -78,12 +72,8 @@ async function setDynamicFields() {
       runStats.prerequestScripts.failed +
       runStats.testScripts.failed +
       runStats.assertions.failed;
-    document.querySelector("#totalSkippedTests").innerHTML =
-      skipped?.length ?? 0;
     document.querySelector("#totalRequestsBadge").innerHTML =
       runStats.items.total;
-    document.querySelector("#totalSkippedBadge").innerHTML =
-      skipped?.length ?? 0;
     document.querySelector("#totalFailedBadge").innerHTML = runFailures?.length;
 
     // File information
@@ -113,14 +103,11 @@ async function setDynamicFields() {
       runStats.assertions.total;
     document.querySelector("#failedAssertions").innerHTML =
       runStats.assertions.failed;
-    document.querySelector("#totalSkippedTests2").innerHTML =
-      skipped?.length ?? 0;
     document.querySelector("#fileInformation").style.paddingTop = "50px";
     document.querySelector("#fileInformation").style.pageBreakBefore = "always";
     document.querySelector("#pills-requests").style.pageBreakBefore = "always";
     document.querySelector("#pills-requests").style.paddingTop = "70px";
     document.querySelector("#pills-failed").style.pageBreakBefore = "always";
-    document.querySelector("#pills-skipped").style.pageBreakBefore = "always";
   }
   await insertSummaryData();
 
@@ -426,11 +413,11 @@ async function setDynamicFields() {
                                       <td class="${assertion.error
                         ? "text-danger text-center"
                         : "text-success text-center"
-                      }">${assertion.error ? "0" : "1"}</td>
+                      }">${assertion.skipped ? "0" : assertion.error ? "0" : "1"}</td>
                                       <td class="${assertion.error
                         ? "text-danger text-center"
                         : "text-success text-center"
-                      }">${assertion.error ? "1" : "0"}</td>
+                      }">${assertion.skipped ? "0" : assertion.error ? "1" : "0"}</td>
                                       <td class="${assertion.skipped
                         ? "text-danger text-center"
                         : "text-success text-center"
@@ -744,8 +731,7 @@ async function setDynamicFields() {
                                           assertion.error
                                             ? "text-danger text-center"
                                             : "text-success text-center"
-                                        }">${
-                                      assertion.error ? "0" : "1"
+                                        }">${assertion.skipped ? "0" : assertion.error ? "0" : "1"
                                     }</td>
                                         <td class="${
                                           assertion.error
@@ -887,79 +873,4 @@ async function setDynamicFields() {
   }
   await renderFailures();
 
-  // function to populate skipped page with JSON data
-  function generateSkippedTestHTML(test, index) {
-    return `
-        <div class="col-sm-12 mb-3">
-            <div class="card-deck">
-                <div class="card border-warning">
-                    <div class="card-header bg-warning text-white">
-                        <a data-toggle="expand" href="#" data-target="#skipped-expand-${test.cursor.ref
-      }" aria-expanded="false" aria-controls="expand" id="skipped-${test.cursor.ref}" class="expanded text-white z-block">
-                            Iteration ${test.cursor.iteration + 1
-      } - Skipped Test <i class="float-lg-right fa fa-chevron-down" style="padding-top:5px;"></i>
-                        </a>
-                    </div>
-                    <div id="skipped-expand-${test.cursor.ref
-      }" class="expand" aria-labelledby="skipped-${test.cursor.ref}">
-                        <div class="card-body">
-                            <h5><strong>Request Name:</strong> ${test.item.name
-      }</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-  }
-
-  async function renderSkippedTests() {
-    const skippedTestsResponse = await fetch(`${jsonHostBaseUrl}/skippedTests`);
-    const skippedTests = skippedTestsResponse.ok
-      ? await skippedTestsResponse.json()
-      : [];
-    if (skippedTests.length > 0) {
-      const skippedTestsContainer = document.getElementById("skipped-tests");
-      skippedTestsContainer.style.marginTop = "100px";
-      skippedTestsContainer.innerHTML = `
-        <div class="alert alert-warning text-uppercase text-center">
-          <h4>Showing ${skippedTests.length} Skipped Tests</h4>
-        </div>
-      `;
-      skippedTests.forEach((test, index) => {
-        skippedTestsContainer.innerHTML += generateSkippedTestHTML(test, index);
-      });
-    } else {
-      const skippedTestsContainer = document.getElementById("skipped-tests");
-      skippedTestsContainer.style.marginTop = "180px";
-      skippedTestsContainer.innerHTML += `
-          <div class="alert alert-success text-uppercase text-center">
-            <br /><br />
-              <h1 class="text-center">
-                There are no skipped tests
-                <span><i class="far fa-thumbs-up"></i></span>
-              </h1>
-              <br /><br />
-            </div>
-        `;
-    }
-  }
-
-  await renderSkippedTests();
 }
-
-document.getElementById('DownloadPdf').addEventListener('click', () => {
-  document.querySelector("#fileInformation").style.paddingTop = "none";
-  document.querySelector("#pills-requests").style.paddingTop = "none";
-  document.querySelector("#failures").style.marginTop = "none";
-  document.querySelector("#skipped-tests").style.marginTop = "none";
-  document.querySelector("#DownloadPdf").style.display = "none";
-
-  window.scrollTo({
-    top: 50,
-    left: 50,
-  });
-
-  window.print();
-  document.querySelector("#DownloadPdf").style.display = "flex";
-});
