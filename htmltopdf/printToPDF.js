@@ -3,6 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 (async () => {
     const browser = await puppeteer.launch({
         headless: true,
@@ -21,6 +23,8 @@ const { v4: uuidv4 } = require('uuid');
     const filePath = path.join(__dirname, 'index.html');
 
     await page.goto(`file://${filePath}`, { waitUntil: 'networkidle0' });
+
+    await sleep(2000);
 
     const title = await page.title();
 
