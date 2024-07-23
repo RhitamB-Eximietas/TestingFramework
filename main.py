@@ -61,19 +61,22 @@ if __name__ == "__main__":
                     run_robot_tests(collection_path, environment_path)
                     if json_server_process is None:
                         json_server_process = start_json_server(json_file)
+                    time.sleep(2)
                     run_node_script(node_script)
                     time.sleep(5)
-                    if json_server_process:
+                    if json_server_process != None:
                         print("Stopping JSON server")
                         json_server_process.terminate()
                         json_server_process.wait()
+                        json_server_process = None
 
     except FileNotFoundError as e:
         print(f"Error: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
     finally:
-        if json_server_process:
+        if json_server_process != None:
             json_server_process.terminate()
             json_server_process.wait()
+            json_server_process = None
         print('End of process. Check the PDF Report folder.')
