@@ -2,12 +2,13 @@ import subprocess
 import time
 import os
 import csv
+import shutil
+import signal
 
 def run_robot_tests(collection_name, environment_name):
-    if environment_name == None:
+    if environment_name is None:
         if collection_name:
             print(f"Running Robot Framework test with collection name: {collection_name}")
-            # print(f'robot --variable COLLECTION:{collection_name}  -d Robot_framework/Output/ Robot_framework/TestingFW.robot')
             result = subprocess.run(['robot', '--variable', f'COLLECTION:{collection_name}', '-d', 'Robot_framework/Output/', 'Robot_framework/TestingFW.robot'], capture_output=True, text=True)
             print(f"Output for {collection_name}:\n{result.stdout}")
             if result.stderr:
@@ -15,8 +16,7 @@ def run_robot_tests(collection_name, environment_name):
     else:
         if collection_name:
             print(f"Running Robot Framework test with collection name: {collection_name}")
-            # print(f'robot --variable COLLECTION:{collection_name } --variable ENVIRONMENT:{environment_name}  -d Robot_framework/Output/ Robot_framework/TestingFW.robot')
-            result = subprocess.run(['robot', '--variable', f'COLLECTION:{collection_name}','--variable' ,f'ENVIRONMENT:{environment_name}', '-d', 'Robot_framework/Output/', 'Robot_framework/TestingFW.robot'], capture_output=True, text=True)
+            result = subprocess.run(['robot', '--variable', f'COLLECTION:{collection_name}', '--variable', f'ENVIRONMENT:{environment_name}', '-d', 'Robot_framework/Output/', 'Robot_framework/TestingFW.robot'], capture_output=True, text=True)
             print(f"Output for {collection_name}:\n{result.stdout}")
             if result.stderr:
                 print(f"Errors for {collection_name}:\n{result.stderr}")
@@ -36,9 +36,20 @@ def run_node_script(script_path):
     if result.stderr:
         print(f"Errors for {script_path}:\n{result.stderr}")
 
+def stop_json_server(process):
+    if process:
+        print("Stopping JSON server")
+        process.terminate()
+        process.wait()
+
+def copy_file(source, destination):
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
+    shutil.copy2(source, destination)
+    print(f"File copied from {source} to {destination}")
+
 if __name__ == "__main__":
     file_path = './collection.csv'
-    json_file = './Report/JSON/newman_report.json'
+    json_file = './Report/JSON/Host/newman_report.json'
     node_script = './htmltopdf/printToPDF.js'
     json_server_process = None
 
@@ -51,34 +62,36 @@ if __name__ == "__main__":
                 if len(row) < 1:
                     print("Skipping incomplete row")
                     continue  # This ensures we only continue if the row is incomplete
-                
+
                 collection_path = row[0].strip()
                 environment_path = row[1].strip() if len(row) > 1 else None
 
-                print(f'{collection_path}  --  {environment_path}')
-                
                 if collection_path:
+                    storage_path = f'Report/JSON/{collection_path}'
                     run_robot_tests(collection_path, environment_path)
-                    if json_server_process != None:
-                        print("Stopping JSON server")
-                        json_server_process.terminate()
+                    copy_file(json_file, storage_path)
+
+                    if json_server_process:
+                        stop_json_server(json_server_process)
                         json_server_process = None
-                    if json_server_process == None:
-                        json_server_process = start_json_server(json_file)
+
+                    json_server_process = start_json_server(json_file)
                     time.sleep(2)
                     run_node_script(node_script)
                     time.sleep(5)
-                    if json_server_process != None:
-                        print("Stopping JSON server")
-                        json_server_process.terminate()
+
+                    if json_server_process:
+                        stop_json_server(json_server_process)
                         json_server_process = None
 
     except FileNotFoundError as e:
         print(f"Error: {e}")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+    except KeyboardInterrupt:
+        print('Terminated')
     finally:
-        if json_server_process != None:
-            json_server_process.terminate()
+        if json_server_process:
+            stop_json_server(json_server_process)
             json_server_process = None
         print('End of process. Check the PDF Report folder.')

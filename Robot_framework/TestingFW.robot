@@ -7,7 +7,7 @@ Library           Collections
 *** Variables ***
 ${COLLECTION}    
 ${ENVIRONMENT}    
-${JSON_REPORT_PATH}    Report/JSON/newman_report.json
+${JSON_REPORT_PATH}    Report/JSON/Host/newman_report.json
 
 *** Test Cases ***
 Run Postman Collection
