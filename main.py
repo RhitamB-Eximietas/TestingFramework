@@ -59,7 +59,11 @@ if __name__ == "__main__":
                 
                 if collection_path:
                     run_robot_tests(collection_path, environment_path)
-                    if json_server_process is None:
+                    if json_server_process != None:
+                        print("Stopping JSON server")
+                        json_server_process.terminate()
+                        json_server_process = None
+                    if json_server_process == None:
                         json_server_process = start_json_server(json_file)
                     time.sleep(2)
                     run_node_script(node_script)
@@ -67,7 +71,6 @@ if __name__ == "__main__":
                     if json_server_process != None:
                         print("Stopping JSON server")
                         json_server_process.terminate()
-                        json_server_process.wait()
                         json_server_process = None
 
     except FileNotFoundError as e:
@@ -77,6 +80,5 @@ if __name__ == "__main__":
     finally:
         if json_server_process != None:
             json_server_process.terminate()
-            json_server_process.wait()
             json_server_process = None
         print('End of process. Check the PDF Report folder.')
