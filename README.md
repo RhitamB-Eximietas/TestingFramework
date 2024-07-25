@@ -1,6 +1,6 @@
-# Testing Framework for Zebra
+# Testing Framework
 
-This guide provides a comprehensive framework for setting up a testing environment for Zebra using Newman, Robot Framework, and Python. Follow the steps below to export Postman collections, push files to Git, write Robot Framework scripts, generate reports, and publish them.
+This guide provides a comprehensive framework for setting up a testing environment using Newman, Robot Framework, and Python. Follow the steps below to export Postman collections, push files to Git, write Robot Framework scripts, generate reports, and publish them.
 
 ## Pre-requisites
 
