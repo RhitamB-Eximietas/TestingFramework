@@ -1,14 +1,16 @@
 # Testing Framework for Zebra
 
-This guide provides a framework for setting up a testing environment for Zebra using Newman, Robot Framework, and Python. Follow the steps below to export Postman collections, push files to Git, write Robot Framework scripts, generate reports, and publish them.
+This guide provides a comprehensive framework for setting up a testing environment for Zebra using Newman, Robot Framework, and Python. Follow the steps below to export Postman collections, push files to Git, write Robot Framework scripts, generate reports, and publish them.
 
 ## Pre-requisites
 
 Ensure that the CI/CD pipeline has the following pre-installed:
 - Newman (a CLI runner for Postman)
 - Robot Framework
+- Robot Framework JSON Library
 - Python
 - Node.js
+- Puppeteer
 
 ## Steps
 
@@ -18,95 +20,56 @@ Ensure that the CI/CD pipeline has the following pre-installed:
 2. Select the desired collection.
 3. Click on the "..." icon.
 4. Choose "Export".
-5. Select "Collection v2" format.
+5. Select the "Collection v2" format.
 6. Repeat the process for the environment.
 
 ### 2. Push Files to Git and Merge with Main
 
 1. Navigate to your local Git repository.
-2. Add the exported files.
+2. Add the exported files:
    ```sh
    git add .
    ```
-3. Commit changes.
+3. Commit the changes:
    ```sh
-   git commit -m "feat:conventional commits"
+   git commit -m "feat: export Postman collections and environments"
    ```
-4. Push to Git repository.
+4. Push to the Git repository:
    ```sh
    git push origin main/<branch>
    ```
 5. Merge with the main branch if necessary.
 
-### 3. Write Robot Framework Script for Newman Execution
+### 3. Save the Collection and Environment
 
-1. Install Newman if not already installed.
-   ```sh
-   npm install -g newman
+1. Save the Postman collection in the path:
    ```
-2. Create a `.robot` file for the Robot Framework script.
-3. Write test cases using Robot Framework's syntax.
-4. Use the `Run Process` keyword to execute Newman.
-5. Specify options like collection file, environment file, etc.
+   PostmanCollections/Collection/
+   ```
+2. Save the environment in the path:
+   ```
+   PostmanCollections/Environment/
+   ```
 
-### 4. Generate HTML and JSON Report for Execution
+### 4. Write the Path Names in collection.csv
 
-After executing Newman with Robot Framework, HTML and JSON reports are generated automatically. These reports contain test execution results, including pass/fail status, response times, etc.
+1. Write the paths of the collection and environment, separating them using a comma.
 
-### 5. Publish HTML and JSON Reports
+### 5. Execute main.py
 
-1. Identify the location of generated HTML and JSON reports.
-2. Copy or move these files to a location accessible to others (e.g., a web server, shared folder).
-3. Share the URL or path to the HTML report for others to view.
-4. Optionally, compress the JSON report for distribution.
+1. Use the following command to execute the program:
+   ```sh
+   py main.py
+   ```
 
-## Example Robot Framework Script
+By following these steps, you can effectively set up and utilize a testing framework using Newman, Robot Framework, and Python, along with Puppeteer to generate the PDF report.
 
-```robot
-*** Settings ***
-Library           Process
+### Improvements
 
-*** Variables ***
-${COLLECTION}     path/to/your/postman_collection.json
-${ENVIRONMENT}    path/to/your/postman_environment.json
-${REPORT}         path/to/your/newman_report.html
-${REPORT_JSON}    path/to/your/newman_report.json
+1. **Detailed Commit Messages**: Use more descriptive commit messages to clearly communicate the changes made.
+2. **Automated Script Execution**: Automate the execution of `main.py` within your CI/CD pipeline for seamless integration.
+3. **Error Handling**: Incorporate error handling in `main.py` to manage potential issues during execution.
+4. **Documentation**: Maintain a detailed README file in your repository to provide context and instructions for new users.
+5. **Version Control**: Use version control for your Postman collections and environments to track changes over time.
 
-*** Test Cases ***
-Run Newman Tests
-    Run Process    newman run ${COLLECTION} -e ${ENVIRONMENT} -r html,cli,json --reporter-html-export ${REPORT} --reporter-json-export ${REPORT_JSON}
-```
-
-This script runs Newman with the specified collection and environment files and generates HTML and JSON reports.
-
-### 6. Handling Reports in Jenkins
-
-Once the Robot Framework completes execution, two reports (HTML and JSON) are created. Jenkins can be configured to handle these reports as follows:
-
-1. **Post-Build Actions**:
-   - Check if the Test cases failed
-   - If any test case fails:
-      * Send an email with both the HTML and JSON files
-   - Else: 
-      * Send a successfull mail saying that the build passed successfully,attatch the HTML and JSON report
-
-2. **Email Notifications**:
-   - Set up email notifications in Jenkins to send the reports.
-   - If the test fails, Jenkins will trigger an email with the failed report.
-   - If the test passes, Jenkins will trigger an email with the passed report.
-
-Here is an example of configuring Jenkins for email notifications:
-
-- **Install Email Extension Plugin**:
-  - Go to Jenkins Dashboard -> Manage Jenkins -> Manage Plugins -> Available -> Search for "Email Extension Plugin" -> Install.
-
-- **Configure Email Notification**:
-  - Go to Jenkins Dashboard -> Manage Jenkins -> Configure System -> Extended E-mail Notification.
-  - Provide the SMTP server details and default email content.
-
-- **Add Email Notifications to Job**:
-  - In your Jenkins job configuration, add a post-build action "Editable Email Notification".
-  - Configure the trigger for "Failure" and "Success".
-  - Set the content of the email and attach the HTML and JSON reports.
-
-By following these steps, you can effectively set up and utilize a testing framework for Zebra using Newman, Robot Framework, and Python, along with Jenkins for CI/CD integration and email notifications.
+By incorporating these improvements, you can enhance the robustness and maintainability of your testing framework.
