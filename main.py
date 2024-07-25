@@ -2,6 +2,8 @@ import subprocess
 import time
 import os
 import csv
+import shutil
+
 
 def run_robot_tests(collection_name, environment_name):
     if environment_name == None:
@@ -36,9 +38,18 @@ def run_node_script(script_path):
     if result.stderr:
         print(f"Errors for {script_path}:\n{result.stderr}")
 
+def copy_file(source, destination):
+    
+    # Ensure the destination directory exists
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
+    
+    # Copy the file
+    shutil.copy2(source, destination)
+    print(f"File copied from {source} to {destination}")
+
 if __name__ == "__main__":
     file_path = './collection.csv'
-    json_file = './Report/JSON/newman_report.json'
+    json_file = './Report/JSON/Host/newman_report.json'
     node_script = './htmltopdf/printToPDF.js'
     json_server_process = None
 
@@ -54,23 +65,27 @@ if __name__ == "__main__":
                 
                 collection_path = row[0].strip()
                 environment_path = row[1].strip() if len(row) > 1 else None
-
-                print(f'{collection_path}  --  {environment_path}')
                 
                 if collection_path:
+                    storage_path = f'Report/JSON/{collection_path}'
                     run_robot_tests(collection_path, environment_path)
+                    copy_file(json_file,storage_path)
                     if json_server_process != None:
                         print("Stopping JSON server")
                         json_server_process.terminate()
+                        json_server_process.wait()
                         json_server_process = None
+
                     if json_server_process == None:
                         json_server_process = start_json_server(json_file)
                     time.sleep(2)
                     run_node_script(node_script)
                     time.sleep(5)
+
                     if json_server_process != None:
                         print("Stopping JSON server")
                         json_server_process.terminate()
+                        json_server_process.wait()
                         json_server_process = None
 
     except FileNotFoundError as e:
@@ -80,5 +95,6 @@ if __name__ == "__main__":
     finally:
         if json_server_process != None:
             json_server_process.terminate()
+            json_server_process.wait()
             json_server_process = None
         print('End of process. Check the PDF Report folder.')

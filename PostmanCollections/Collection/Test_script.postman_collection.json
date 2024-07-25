@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "87103677-ff89-4a35-86d2-bb9ede4adaab",
+		"name": "Test_script",
+		"description": "From the Postman Docs: [Test script examples](https://learning.postman.com/docs/writing-scripts/script-references/test-examples/)\n\n> Read the documentation on the right side of each request. Look under the **Tests** tab of the request to see the test script examples. Hit **Send**, and inspect the **Test Results** on the bottom.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33071978"
+	},
+	"item": [
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "Getting started with tests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/get",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						},
+						"description": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options."
+					},
+					"response": []
+				},
+				{
+					"name": "Getting started with tests",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test.skip('Skipped Test', () =>{\r",
+									"    pm.response.to.have.status(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://postman-echo.com/get",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						},
+						"description": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options."
+					},
+					"response": []
+				},
+				{
+					"name": "Using multiple assertions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"The response has all properties\", () => {\r",
+									"    //parse the response json and test three properties\r",
+									"    const responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.form.type).to.eql('vip');\r",
+									"    pm.expect(responseJson.form.name).to.be.a('');\r",
+									"    pm.expect(responseJson.form.id).to.have.lengthOf(1);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Melania Trump",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "vip",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://postman-echo.com/post",
+							"protocol": "https",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"post"
+							]
+						},
+						"description": "Your tests can include multiple assertions as part of a single test—you can use this to group together related assertions.\n\n```\npm.test(\"The response has all properties\", () => {\n    //parse the response json and test three properties\n    const responseJson = pm.response.json();\n    pm.expect(responseJson.type).to.eql('vip');\n    pm.expect(responseJson.name).to.be.a('string');\n    pm.expect(responseJson.id).to.have.lengthOf(1);\n});\n```\n\nIf any of the contained assertions fails, the test as a whole will fail. All assertions must be successful for the test to pass."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "mockBaseUrl",
+			"value": "https://533c269c-fb94-4044-86e6-82273df3a022.mock.pstmn.io"
+		}
+	]
+}
