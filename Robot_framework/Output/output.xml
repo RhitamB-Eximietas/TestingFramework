@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-07-25T16:57:12.985953" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-07-25T17:34:15.405205" rpa="false" schemaversion="5">
 <suite id="s1" name="TestingFW" source="C:\Users\RHITAM BHATTACHARYA\Documents\Testing FW\TestingFramework\Robot_framework\TestingFW.robot">
 <test id="s1-t1" name="Run Postman Collection" line="13">
 <if>
@@ -8,30 +8,30 @@
 <arg>${COLLECTION}</arg>
 <arg>${ENVIRONMENT}</arg>
 <arg>${JSON_REPORT_PATH}</arg>
-<status status="NOT RUN" start="2024-07-25T16:57:13.490132" elapsed="0.000000"/>
+<status status="NOT RUN" start="2024-07-25T17:34:15.544712" elapsed="0.000000"/>
 </kw>
-<status status="NOT RUN" start="2024-07-25T16:57:13.490132" elapsed="0.000000"/>
+<status status="NOT RUN" start="2024-07-25T17:34:15.544712" elapsed="0.000000"/>
 </branch>
 <branch type="ELSE">
 <kw name="Run Newman without environment">
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-07-25T16:57:13.490132" level="INFO">Collection path: PostmanCollections/Collection/Test_script.postman_collection.json</msg>
+<msg time="2024-07-25T17:34:15.544712" level="INFO">Collection path: PostmanCollections/Collection/Test_script.postman_collection.json</msg>
 <arg>Collection path: ${collection}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-07-25T16:57:13.490132" elapsed="0.000000"/>
+<status status="PASS" start="2024-07-25T17:34:15.544712" elapsed="0.000000"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-07-25T16:57:13.490132" level="INFO">Environment path: </msg>
+<msg time="2024-07-25T17:34:15.544712" level="INFO">Environment path: </msg>
 <arg>Environment path: ${environment}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-07-25T16:57:13.490132" elapsed="0.000000"/>
+<status status="PASS" start="2024-07-25T17:34:15.544712" elapsed="0.000000"/>
 </kw>
 <kw name="Run Process" owner="Process">
-<msg time="2024-07-25T16:57:13.505782" level="INFO">Starting process:
+<msg time="2024-07-25T17:34:15.544712" level="INFO">Starting process:
 newman run PostmanCollections/Collection/Test_script.postman_collection.json -r json --reporter-json-export Report/JSON/Host/newman_report.json</msg>
-<msg time="2024-07-25T16:57:13.568756" level="INFO">Waiting for process to complete.</msg>
-<msg time="2024-07-25T16:57:21.679592" level="INFO">Process completed.</msg>
-<msg time="2024-07-25T16:57:21.679592" level="INFO">${result} = &lt;result object with rc 1&gt;</msg>
+<msg time="2024-07-25T17:34:15.560327" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-07-25T17:34:18.809714" level="INFO">Process completed.</msg>
+<msg time="2024-07-25T17:34:18.809714" level="INFO">${result} = &lt;result object with rc 1&gt;</msg>
 <var>${result}</var>
 <arg>newman</arg>
 <arg>run</arg>
@@ -42,60 +42,60 @@ newman run PostmanCollections/Collection/Test_script.postman_collection.json -r 
 <arg>${json_report_path}</arg>
 <arg>shell=True</arg>
 <doc>Runs a process and waits for it to complete.</doc>
-<status status="PASS" start="2024-07-25T16:57:13.490132" elapsed="8.189460"/>
+<status status="PASS" start="2024-07-25T17:34:15.544712" elapsed="3.265002"/>
 </kw>
 <kw name="Log Many" owner="BuiltIn">
-<msg time="2024-07-25T16:57:21.679592" level="INFO"/>
-<msg time="2024-07-25T16:57:21.679592" level="INFO"/>
+<msg time="2024-07-25T17:34:18.809714" level="INFO"/>
+<msg time="2024-07-25T17:34:18.819252" level="INFO"/>
 <arg>${result.stdout}</arg>
 <arg>${result.stderr}</arg>
 <doc>Logs the given messages as separate entries using the INFO level.</doc>
-<status status="PASS" start="2024-07-25T16:57:21.679592" elapsed="0.000000"/>
+<status status="PASS" start="2024-07-25T17:34:18.809714" elapsed="0.009538"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-07-25T16:57:21.679592" level="INFO">Stdout: </msg>
+<msg time="2024-07-25T17:34:18.819252" level="INFO">Stdout: </msg>
 <arg>Stdout: ${result.stdout}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-07-25T16:57:21.679592" elapsed="0.000000"/>
+<status status="PASS" start="2024-07-25T17:34:18.819252" elapsed="0.000000"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2024-07-25T16:57:21.679592" level="INFO">Stderr: </msg>
+<msg time="2024-07-25T17:34:18.819252" level="INFO">Stderr: </msg>
 <arg>Stderr: ${result.stderr}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2024-07-25T16:57:21.679592" elapsed="0.000000"/>
+<status status="PASS" start="2024-07-25T17:34:18.819252" elapsed="0.000000"/>
 </kw>
 <kw name="Should Be Equal As Strings" owner="BuiltIn">
-<msg time="2024-07-25T16:57:21.679592" level="INFO">Argument types are:
+<msg time="2024-07-25T17:34:18.819252" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2024-07-25T16:57:21.679592" level="FAIL">1 != 0</msg>
+<msg time="2024-07-25T17:34:18.819252" level="FAIL">1 != 0</msg>
 <arg>${result.rc}</arg>
 <arg>0</arg>
 <doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="FAIL" start="2024-07-25T16:57:21.679592" elapsed="0.000000">1 != 0</status>
+<status status="FAIL" start="2024-07-25T17:34:18.819252" elapsed="0.000000">1 != 0</status>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>Newman run completed.</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2024-07-25T16:57:21.679592" elapsed="0.000000"/>
+<status status="NOT RUN" start="2024-07-25T17:34:18.819252" elapsed="0.000000"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
 <arg>Find the JSON report in the Reports folder.</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" start="2024-07-25T16:57:21.679592" elapsed="0.000000"/>
+<status status="NOT RUN" start="2024-07-25T17:34:18.819252" elapsed="0.000000"/>
 </kw>
 <arg>${COLLECTION}</arg>
 <arg>${JSON_REPORT_PATH}</arg>
-<status status="FAIL" start="2024-07-25T16:57:13.490132" elapsed="8.189460">1 != 0</status>
+<status status="FAIL" start="2024-07-25T17:34:15.544712" elapsed="3.274540">1 != 0</status>
 </kw>
-<status status="FAIL" start="2024-07-25T16:57:13.490132" elapsed="8.189460">1 != 0</status>
+<status status="FAIL" start="2024-07-25T17:34:15.544712" elapsed="3.274540">1 != 0</status>
 </branch>
-<status status="FAIL" start="2024-07-25T16:57:13.490132" elapsed="8.189460">1 != 0</status>
+<status status="FAIL" start="2024-07-25T17:34:15.544712" elapsed="3.274540">1 != 0</status>
 </if>
 <doc>Runs the Postman collection and generates an HTML report using htmlextra reporter and a JSON report</doc>
-<status status="FAIL" start="2024-07-25T16:57:13.490132" elapsed="8.189460">1 != 0</status>
+<status status="FAIL" start="2024-07-25T17:34:15.544712" elapsed="3.274540">1 != 0</status>
 </test>
-<status status="FAIL" start="2024-07-25T16:57:13.001580" elapsed="8.678012"/>
+<status status="FAIL" start="2024-07-25T17:34:15.405205" elapsed="3.414047"/>
 </suite>
 <statistics>
 <total>
