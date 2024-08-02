@@ -37,10 +37,12 @@ def run_node_script(script_path):
         print(f"Errors for {script_path}:\n{result.stderr}")
 
 def stop_json_server(process):
+    port = 3000
     if process:
         print("Stopping JSON server")
-        process.terminate()
-        process.wait()
+        # process.terminate()
+        # process.wait()
+        json_server_stop =f'npx kill-port {port}'
 
 def copy_file(source, destination):
     os.makedirs(os.path.dirname(destination), exist_ok=True)

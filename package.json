@@ -1,6 +1,17 @@
 {
   "dependencies": {
     "json-server": "^1.0.0-beta.1",
+    "kill-port": "^2.0.1",
     "puppeteer": "^22.15.0"
-  }
+  },
+  "name": "testingframework",
+  "version": "1.0.0",
+  "description": "This repository contains a framework for setting up a testing environment using Newman, Robot Framework, and Python. The framework allows you to export Postman collections, push files to Git, write Robot Framework scripts, generate reports, and publish them.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
