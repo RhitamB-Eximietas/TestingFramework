@@ -39,10 +39,15 @@ def run_node_script(script_path):
 def stop_json_server(process):
     port = 3000
     if process:
-        print("Stopping JSON server")
         # process.terminate()
         # process.wait()
         json_server_stop =f'npx kill-port {port}'
+        try:
+            json_server_stop_process = subprocess.Popen(json_server_stop, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+            print("Stopping JSON server")
+        except Exception as e:
+            raise e(f'Failed to close server')
+
 
 def copy_file(source, destination):
     os.makedirs(os.path.dirname(destination), exist_ok=True)
