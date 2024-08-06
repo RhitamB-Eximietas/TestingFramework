@@ -24,7 +24,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     await page.goto(`file://${filePath}`, { waitUntil: 'networkidle0' });
 
-    await sleep(2000);
+    sleep(4000);
 
     const title = await page.title();
 
