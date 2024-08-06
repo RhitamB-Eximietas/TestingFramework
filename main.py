@@ -5,18 +5,18 @@ import csv
 import shutil
 import signal
 
-def run_robot_tests(collection_name, environment_name):
+def run_robot_tests(collection_name, environment_name,json_path):
     if environment_name is None:
         if collection_name:
             print(f"Running Robot Framework test with collection name: {collection_name}")
-            result = subprocess.run(['robot', '--variable', f'COLLECTION:{collection_name}', '-d', 'Robot_framework/Output/', 'Robot_framework/TestingFW.robot'], capture_output=True, text=True)
+            result = subprocess.run(['robot', '--variable', f'COLLECTION:{collection_name}', '--variable', f'JSON_REPORT_PATH:{json_path}', '-d', 'Robot_framework/Output/', 'Robot_framework/TestingFW.robot'], capture_output=True, text=True)
             print(f"Output for {collection_name}:\n{result.stdout}")
             if result.stderr:
                 print(f"Errors for {collection_name}:\n{result.stderr}")
     else:
         if collection_name:
             print(f"Running Robot Framework test with collection name: {collection_name}")
-            result = subprocess.run(['robot', '--variable', f'COLLECTION:{collection_name}', '--variable', f'ENVIRONMENT:{environment_name}', '-d', 'Robot_framework/Output/', 'Robot_framework/TestingFW.robot'], capture_output=True, text=True)
+            result = subprocess.run(['robot', '--variable', f'COLLECTION:{collection_name}', '--variable', f'ENVIRONMENT:{environment_name}', '--variable', f'JSON_REPORT_PATH:{json_path}', '-d', 'Robot_framework/Output/', 'Robot_framework/TestingFW.robot'], capture_output=True, text=True)
             print(f"Output for {collection_name}:\n{result.stdout}")
             if result.stderr:
                 print(f"Errors for {collection_name}:\n{result.stderr}")
@@ -56,7 +56,6 @@ def copy_file(source, destination):
 
 if __name__ == "__main__":
     file_path = './collection.csv'
-    json_file = './Report/JSON/Host/newman_report.json'
     node_script = './htmltopdf/printToPDF.js'
     json_server_process = None
 
@@ -73,10 +72,13 @@ if __name__ == "__main__":
                 collection_path = row[0].strip()
                 environment_path = row[1].strip() if len(row) > 1 else None
 
+                json_file = f'./Report/JSON/{collection_path}'
+
+
                 if collection_path:
                     storage_path = f'Report/JSON/{collection_path}'
-                    run_robot_tests(collection_path, environment_path)
-                    copy_file(json_file, storage_path)
+                    run_robot_tests(collection_path, environment_path,json_file)
+                    # copy_file(json_file, storage_path)
 
                     if json_server_process:
                         stop_json_server(json_server_process)
