@@ -47,13 +47,7 @@ def stop_json_server(process):
             print("Stopping JSON server")
         except Exception as e:
             raise e(f'Failed to close server')
-
-
-def copy_file(source, destination):
-    os.makedirs(os.path.dirname(destination), exist_ok=True)
-    shutil.copy2(source, destination)
-    print(f"File copied from {source} to {destination}")
-
+        
 if __name__ == "__main__":
     file_path = './collection.csv'
     node_script = './htmltopdf/printToPDF.js'
