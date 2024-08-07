@@ -1,0 +1,3391 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "87103677-ff89-4a35-86d2-bb9ede4adaab",
+      "exporter_id": "33071978"
+    },
+    "item": [
+      {
+        "id": "70e8f71b-1451-4082-a87b-49f09bd3a190",
+        "name": "New Folder",
+        "item": [
+          {
+            "id": "2fafed03-a8da-40fc-bd07-37298e083349",
+            "name": "Getting started with tests",
+            "request": {
+              "description": {
+                "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+                "type": "text/plain"
+              },
+              "url": {
+                "protocol": "https",
+                "path": [
+                  "get"
+                ],
+                "host": [
+                  "postman-echo",
+                  "com"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "method": "GET"
+            },
+            "response": [],
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "id": "bf9ab49a-9859-4ff6-930f-0ca2129aec61",
+                  "type": "text/javascript",
+                  "packages": {},
+                  "exec": [
+                    "pm.test(\"Status code is 200\", function () {\r",
+                    "  pm.response.to.have.status(201);\r",
+                    "});"
+                  ],
+                  "_lastExecutionId": "e1588dd5-332c-4abf-97c8-29156ac22e8b"
+                }
+              },
+              {
+                "listen": "prerequest",
+                "script": {
+                  "id": "cba3ec2e-11f9-4956-b834-a713941cc6da",
+                  "type": "text/javascript",
+                  "packages": {},
+                  "exec": [
+                    ""
+                  ],
+                  "_lastExecutionId": "63b416c7-8893-4ae9-8e1a-5e2645b305b3"
+                }
+              }
+            ]
+          },
+          {
+            "id": "fda7b05f-6bb6-4a4a-9d84-38aa2fce88b5",
+            "name": "Getting started with tests",
+            "request": {
+              "description": {
+                "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+                "type": "text/plain"
+              },
+              "url": {
+                "protocol": "https",
+                "path": [
+                  "get"
+                ],
+                "host": [
+                  "postman-echo",
+                  "com"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "method": "GET"
+            },
+            "response": [],
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "id": "bbc11d72-de5c-4f65-a019-c42f85e5f591",
+                  "type": "text/javascript",
+                  "packages": {},
+                  "exec": [
+                    "pm.test.skip('Skipped Test', () =>{\r",
+                    "    pm.response.to.have.status(401);\r",
+                    "});"
+                  ],
+                  "_lastExecutionId": "d4577ff6-73ba-4391-8547-435081418075"
+                }
+              },
+              {
+                "listen": "prerequest",
+                "script": {
+                  "id": "3863e3cd-c6dc-47b4-9234-0b6c1895c65d",
+                  "type": "text/javascript",
+                  "packages": {},
+                  "exec": [
+                    ""
+                  ],
+                  "_lastExecutionId": "11189f2f-d96d-4815-bc8d-90263cb26611"
+                }
+              }
+            ]
+          },
+          {
+            "id": "1ef9a67f-b047-4bdf-8f01-dd8ad368e17b",
+            "name": "Using multiple assertions",
+            "request": {
+              "description": {
+                "content": "Your tests can include multiple assertions as part of a single test—you can use this to group together related assertions.\n\n```\npm.test(\"The response has all properties\", () => {\n    //parse the response json and test three properties\n    const responseJson = pm.response.json();\n    pm.expect(responseJson.type).to.eql('vip');\n    pm.expect(responseJson.name).to.be.a('string');\n    pm.expect(responseJson.id).to.have.lengthOf(1);\n});\n```\n\nIf any of the contained assertions fails, the test as a whole will fail. All assertions must be successful for the test to pass.",
+                "type": "text/plain"
+              },
+              "url": {
+                "protocol": "https",
+                "path": [
+                  "post"
+                ],
+                "host": [
+                  "postman-echo",
+                  "com"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "method": "POST",
+              "body": {
+                "mode": "formdata",
+                "formdata": [
+                  {
+                    "key": "name",
+                    "value": "Melania Trump",
+                    "type": "text"
+                  },
+                  {
+                    "key": "type",
+                    "value": "vip",
+                    "type": "text"
+                  },
+                  {
+                    "key": "id",
+                    "value": "5",
+                    "type": "text"
+                  }
+                ]
+              }
+            },
+            "response": [],
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "id": "e1b3825e-062c-4629-9b8a-6664ae8b5ff1",
+                  "type": "text/javascript",
+                  "packages": {},
+                  "exec": [
+                    "pm.test(\"The response has all properties\", () => {\r",
+                    "    //parse the response json and test three properties\r",
+                    "    const responseJson = pm.response.json();\r",
+                    "    pm.expect(responseJson.form.type).to.eql('vip');\r",
+                    "    pm.expect(responseJson.form.name).to.be.a('');\r",
+                    "    pm.expect(responseJson.form.id).to.have.lengthOf(1);\r",
+                    "});"
+                  ],
+                  "_lastExecutionId": "4b7358af-ff3b-457e-8413-5dd560f8f3f0"
+                }
+              },
+              {
+                "listen": "prerequest",
+                "script": {
+                  "id": "0e4bc0b1-b39a-4464-898e-8ec3c105664e",
+                  "type": "text/javascript",
+                  "exec": [],
+                  "_lastExecutionId": "5cca5c0d-7be9-47ba-979f-b225f033895a"
+                }
+              }
+            ]
+          }
+        ],
+        "event": []
+      }
+    ],
+    "event": [
+      {
+        "listen": "prerequest",
+        "script": {
+          "id": "db9cdff4-985a-4b7e-8650-c4c7adb0dae7",
+          "type": "text/javascript",
+          "exec": [
+            ""
+          ],
+          "_lastExecutionId": "3ce53c26-b3c6-4474-bec8-6ca533d6c593"
+        }
+      },
+      {
+        "listen": "test",
+        "script": {
+          "id": "cd7576b0-1083-4547-9da1-24f1c357d47e",
+          "type": "text/javascript",
+          "exec": [
+            ""
+          ],
+          "_lastExecutionId": "cb9ee84c-d69b-4466-9f66-3dc2a0cbea58"
+        }
+      }
+    ],
+    "variable": [
+      {
+        "type": "any",
+        "value": "https://533c269c-fb94-4044-86e6-82273df3a022.mock.pstmn.io",
+        "key": "mockBaseUrl"
+      }
+    ],
+    "info": {
+      "_postman_id": "87103677-ff89-4a35-86d2-bb9ede4adaab",
+      "name": "Test_script",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "description": {
+        "content": "From the Postman Docs: [Test script examples](https://learning.postman.com/docs/writing-scripts/script-references/test-examples/)\n\n> Read the documentation on the right side of each request. Look under the **Tests** tab of the request to see the test script examples. Hit **Send**, and inspect the **Test Results** on the bottom.",
+        "type": "text/plain"
+      }
+    }
+  },
+  "environment": {
+    "id": "29ce53ef-15f9-42af-8db4-71968a69453c",
+    "values": []
+  },
+  "globals": {
+    "id": "214d9f58-3294-420a-b099-895ea43f902b",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 12,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 3,
+        "pending": 0,
+        "failed": 2
+      },
+      "testScripts": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 668,
+      "responseMin": 310,
+      "responseMax": 1370,
+      "responseSd": 496.421863606617,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1723008861497,
+      "completed": 1723008863877
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 3,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "9e5dad42-8362-407b-b2ab-2ee55df798b1",
+          "httpRequestId": "4dcd30dd-44bd-4de5-ae46-af08e7358b7b"
+        },
+        "item": {
+          "id": "2fafed03-a8da-40fc-bd07-37298e083349",
+          "name": "Getting started with tests",
+          "request": {
+            "description": {
+              "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "get"
+              ],
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf9ab49a-9859-4ff6-930f-0ca2129aec61",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "e1588dd5-332c-4abf-97c8-29156ac22e8b"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "cba3ec2e-11f9-4956-b834-a713941cc6da",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "63b416c7-8893-4ae9-8e1a-5e2645b305b3"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "get"
+            ],
+            "host": [
+              "postman-echo",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.37.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "77b826e9-b533-44ac-853d-3a57a5deff17",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "postman-echo.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "response": {
+          "id": "6e4acc34-3328-491e-b7a5-d9fdfb5cacb6",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 07 Aug 2024 05:34:23 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "485"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Server",
+              "value": "nginx/1.25.3"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"1e5-IuvAqmb5798kqgDOvNUEWGvmLG4\""
+            },
+            {
+              "key": "set-cookie",
+              "value": "sails.sid=s%3AbJLOi_PganD5yPJ5FtALGWsnJ_fEUdCF.tMGHRf61%2BE3%2BbNxDcbC0z1i9XaBgAmEU5dtjvq6N42k; Path=/; HttpOnly"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              97,
+              114,
+              103,
+              115,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              104,
+              101,
+              97,
+              100,
+              101,
+              114,
+              115,
+              34,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              104,
+              111,
+              115,
+              116,
+              34,
+              58,
+              32,
+              34,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              101,
+              99,
+              104,
+              111,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              114,
+              101,
+              113,
+              117,
+              101,
+              115,
+              116,
+              45,
+              115,
+              116,
+              97,
+              114,
+              116,
+              34,
+              58,
+              32,
+              34,
+              116,
+              61,
+              49,
+              55,
+              50,
+              51,
+              48,
+              48,
+              56,
+              56,
+              54,
+              51,
+              46,
+              50,
+              56,
+              53,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              102,
+              111,
+              114,
+              119,
+              97,
+              114,
+              100,
+              101,
+              100,
+              45,
+              112,
+              114,
+              111,
+              116,
+              111,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              115,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              102,
+              111,
+              114,
+              119,
+              97,
+              114,
+              100,
+              101,
+              100,
+              45,
+              112,
+              111,
+              114,
+              116,
+              34,
+              58,
+              32,
+              34,
+              52,
+              52,
+              51,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              97,
+              109,
+              122,
+              110,
+              45,
+              116,
+              114,
+              97,
+              99,
+              101,
+              45,
+              105,
+              100,
+              34,
+              58,
+              32,
+              34,
+              82,
+              111,
+              111,
+              116,
+              61,
+              49,
+              45,
+              54,
+              54,
+              98,
+              51,
+              48,
+              55,
+              53,
+              102,
+              45,
+              50,
+              57,
+              57,
+              99,
+              99,
+              49,
+              53,
+              49,
+              55,
+              53,
+              54,
+              55,
+              56,
+              98,
+              102,
+              49,
+              54,
+              48,
+              54,
+              53,
+              55,
+              101,
+              99,
+              98,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              117,
+              115,
+              101,
+              114,
+              45,
+              97,
+              103,
+              101,
+              110,
+              116,
+              34,
+              58,
+              32,
+              34,
+              80,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              82,
+              117,
+              110,
+              116,
+              105,
+              109,
+              101,
+              47,
+              55,
+              46,
+              51,
+              55,
+              46,
+              49,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              97,
+              99,
+              99,
+              101,
+              112,
+              116,
+              34,
+              58,
+              32,
+              34,
+              42,
+              47,
+              42,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              99,
+              97,
+              99,
+              104,
+              101,
+              45,
+              99,
+              111,
+              110,
+              116,
+              114,
+              111,
+              108,
+              34,
+              58,
+              32,
+              34,
+              110,
+              111,
+              45,
+              99,
+              97,
+              99,
+              104,
+              101,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              116,
+              111,
+              107,
+              101,
+              110,
+              34,
+              58,
+              32,
+              34,
+              55,
+              55,
+              98,
+              56,
+              50,
+              54,
+              101,
+              57,
+              45,
+              98,
+              53,
+              51,
+              51,
+              45,
+              52,
+              52,
+              97,
+              99,
+              45,
+              56,
+              53,
+              51,
+              100,
+              45,
+              51,
+              97,
+              53,
+              55,
+              97,
+              53,
+              100,
+              101,
+              102,
+              102,
+              49,
+              55,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              97,
+              99,
+              99,
+              101,
+              112,
+              116,
+              45,
+              101,
+              110,
+              99,
+              111,
+              100,
+              105,
+              110,
+              103,
+              34,
+              58,
+              32,
+              34,
+              103,
+              122,
+              105,
+              112,
+              44,
+              32,
+              100,
+              101,
+              102,
+              108,
+              97,
+              116,
+              101,
+              44,
+              32,
+              98,
+              114,
+              34,
+              10,
+              32,
+              32,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              117,
+              114,
+              108,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              115,
+              58,
+              47,
+              47,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              101,
+              99,
+              104,
+              111,
+              46,
+              99,
+              111,
+              109,
+              47,
+              103,
+              101,
+              116,
+              34,
+              10,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 1370,
+          "responseSize": 485
+        },
+        "id": "2fafed03-a8da-40fc-bd07-37298e083349",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "Status code is 200",
+              "message": "expected response to have status code 201 but got 200",
+              "stack": "AssertionError: expected response to have status code 201 but got 200\n   at Object.eval sandbox-script.js:1:1)"
+            }
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "ad8fa2aa-5c92-482d-8b96-c148a887635b",
+          "length": 3,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "40c75e05-2081-411c-b893-d5475ceda65a"
+        },
+        "item": {
+          "id": "fda7b05f-6bb6-4a4a-9d84-38aa2fce88b5",
+          "name": "Getting started with tests",
+          "request": {
+            "description": {
+              "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "get"
+              ],
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bbc11d72-de5c-4f65-a019-c42f85e5f591",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test.skip('Skipped Test', () =>{\r",
+                  "    pm.response.to.have.status(401);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "d4577ff6-73ba-4391-8547-435081418075"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "3863e3cd-c6dc-47b4-9234-0b6c1895c65d",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "11189f2f-d96d-4815-bc8d-90263cb26611"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "get"
+            ],
+            "host": [
+              "postman-echo",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.37.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "bc481dc7-77df-45a6-a410-880525c69f4f",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "postman-echo.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Cookie",
+              "value": "sails.sid=s%3AbJLOi_PganD5yPJ5FtALGWsnJ_fEUdCF.tMGHRf61%2BE3%2BbNxDcbC0z1i9XaBgAmEU5dtjvq6N42k",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "response": {
+          "id": "cda76e9d-735c-4bee-9216-a86c03787f41",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 07 Aug 2024 05:34:23 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "597"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Server",
+              "value": "nginx/1.25.3"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"255-ttsIkGcv9eCiVkIAVd0yeIHJWH4\""
+            },
+            {
+              "key": "set-cookie",
+              "value": "sails.sid=s%3Az_NHoCsS6aWNC1KpswuDEbR8VB2SbB3P.vefyyL1Lry58CAXyLDNySfKtFtAqEzBhw46DDbaqHcI; Path=/; HttpOnly"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              97,
+              114,
+              103,
+              115,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              104,
+              101,
+              97,
+              100,
+              101,
+              114,
+              115,
+              34,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              104,
+              111,
+              115,
+              116,
+              34,
+              58,
+              32,
+              34,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              101,
+              99,
+              104,
+              111,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              114,
+              101,
+              113,
+              117,
+              101,
+              115,
+              116,
+              45,
+              115,
+              116,
+              97,
+              114,
+              116,
+              34,
+              58,
+              32,
+              34,
+              116,
+              61,
+              49,
+              55,
+              50,
+              51,
+              48,
+              48,
+              56,
+              56,
+              54,
+              51,
+              46,
+              55,
+              55,
+              50,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              102,
+              111,
+              114,
+              119,
+              97,
+              114,
+              100,
+              101,
+              100,
+              45,
+              112,
+              114,
+              111,
+              116,
+              111,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              115,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              102,
+              111,
+              114,
+              119,
+              97,
+              114,
+              100,
+              101,
+              100,
+              45,
+              112,
+              111,
+              114,
+              116,
+              34,
+              58,
+              32,
+              34,
+              52,
+              52,
+              51,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              97,
+              109,
+              122,
+              110,
+              45,
+              116,
+              114,
+              97,
+              99,
+              101,
+              45,
+              105,
+              100,
+              34,
+              58,
+              32,
+              34,
+              82,
+              111,
+              111,
+              116,
+              61,
+              49,
+              45,
+              54,
+              54,
+              98,
+              51,
+              48,
+              55,
+              53,
+              102,
+              45,
+              49,
+              54,
+              100,
+              52,
+              52,
+              49,
+              99,
+              50,
+              48,
+              100,
+              101,
+              55,
+              100,
+              102,
+              55,
+              48,
+              53,
+              49,
+              56,
+              52,
+              100,
+              50,
+              98,
+              97,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              117,
+              115,
+              101,
+              114,
+              45,
+              97,
+              103,
+              101,
+              110,
+              116,
+              34,
+              58,
+              32,
+              34,
+              80,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              82,
+              117,
+              110,
+              116,
+              105,
+              109,
+              101,
+              47,
+              55,
+              46,
+              51,
+              55,
+              46,
+              49,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              97,
+              99,
+              99,
+              101,
+              112,
+              116,
+              34,
+              58,
+              32,
+              34,
+              42,
+              47,
+              42,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              99,
+              97,
+              99,
+              104,
+              101,
+              45,
+              99,
+              111,
+              110,
+              116,
+              114,
+              111,
+              108,
+              34,
+              58,
+              32,
+              34,
+              110,
+              111,
+              45,
+              99,
+              97,
+              99,
+              104,
+              101,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              116,
+              111,
+              107,
+              101,
+              110,
+              34,
+              58,
+              32,
+              34,
+              98,
+              99,
+              52,
+              56,
+              49,
+              100,
+              99,
+              55,
+              45,
+              55,
+              55,
+              100,
+              102,
+              45,
+              52,
+              53,
+              97,
+              54,
+              45,
+              97,
+              52,
+              49,
+              48,
+              45,
+              56,
+              56,
+              48,
+              53,
+              50,
+              53,
+              99,
+              54,
+              57,
+              102,
+              52,
+              102,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              97,
+              99,
+              99,
+              101,
+              112,
+              116,
+              45,
+              101,
+              110,
+              99,
+              111,
+              100,
+              105,
+              110,
+              103,
+              34,
+              58,
+              32,
+              34,
+              103,
+              122,
+              105,
+              112,
+              44,
+              32,
+              100,
+              101,
+              102,
+              108,
+              97,
+              116,
+              101,
+              44,
+              32,
+              98,
+              114,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              99,
+              111,
+              111,
+              107,
+              105,
+              101,
+              34,
+              58,
+              32,
+              34,
+              115,
+              97,
+              105,
+              108,
+              115,
+              46,
+              115,
+              105,
+              100,
+              61,
+              115,
+              37,
+              51,
+              65,
+              98,
+              74,
+              76,
+              79,
+              105,
+              95,
+              80,
+              103,
+              97,
+              110,
+              68,
+              53,
+              121,
+              80,
+              74,
+              53,
+              70,
+              116,
+              65,
+              76,
+              71,
+              87,
+              115,
+              110,
+              74,
+              95,
+              102,
+              69,
+              85,
+              100,
+              67,
+              70,
+              46,
+              116,
+              77,
+              71,
+              72,
+              82,
+              102,
+              54,
+              49,
+              37,
+              50,
+              66,
+              69,
+              51,
+              37,
+              50,
+              66,
+              98,
+              78,
+              120,
+              68,
+              99,
+              98,
+              67,
+              48,
+              122,
+              49,
+              105,
+              57,
+              88,
+              97,
+              66,
+              103,
+              65,
+              109,
+              69,
+              85,
+              53,
+              100,
+              116,
+              106,
+              118,
+              113,
+              54,
+              78,
+              52,
+              50,
+              107,
+              34,
+              10,
+              32,
+              32,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              117,
+              114,
+              108,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              115,
+              58,
+              47,
+              47,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              101,
+              99,
+              104,
+              111,
+              46,
+              99,
+              111,
+              109,
+              47,
+              103,
+              101,
+              116,
+              34,
+              10,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 324,
+          "responseSize": 597
+        },
+        "id": "fda7b05f-6bb6-4a4a-9d84-38aa2fce88b5",
+        "assertions": [
+          {
+            "assertion": "Skipped Test",
+            "skipped": true
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "3e99b4e9-8fa3-4c04-8261-5e617f182550",
+          "length": 3,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "158750dc-ff3e-4bd1-85ed-4b607c884007"
+        },
+        "item": {
+          "id": "1ef9a67f-b047-4bdf-8f01-dd8ad368e17b",
+          "name": "Using multiple assertions",
+          "request": {
+            "description": {
+              "content": "Your tests can include multiple assertions as part of a single test—you can use this to group together related assertions.\n\n```\npm.test(\"The response has all properties\", () => {\n    //parse the response json and test three properties\n    const responseJson = pm.response.json();\n    pm.expect(responseJson.type).to.eql('vip');\n    pm.expect(responseJson.name).to.be.a('string');\n    pm.expect(responseJson.id).to.have.lengthOf(1);\n});\n```\n\nIf any of the contained assertions fails, the test as a whole will fail. All assertions must be successful for the test to pass.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "post"
+              ],
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Melania Trump",
+                  "type": "text"
+                },
+                {
+                  "key": "type",
+                  "value": "vip",
+                  "type": "text"
+                },
+                {
+                  "key": "id",
+                  "value": "5",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e1b3825e-062c-4629-9b8a-6664ae8b5ff1",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"The response has all properties\", () => {\r",
+                  "    //parse the response json and test three properties\r",
+                  "    const responseJson = pm.response.json();\r",
+                  "    pm.expect(responseJson.form.type).to.eql('vip');\r",
+                  "    pm.expect(responseJson.form.name).to.be.a('');\r",
+                  "    pm.expect(responseJson.form.id).to.have.lengthOf(1);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "4b7358af-ff3b-457e-8413-5dd560f8f3f0"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "0e4bc0b1-b39a-4464-898e-8ec3c105664e",
+                "type": "text/javascript",
+                "exec": [],
+                "_lastExecutionId": "5cca5c0d-7be9-47ba-979f-b225f033895a"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Your tests can include multiple assertions as part of a single test—you can use this to group together related assertions.\n\n```\npm.test(\"The response has all properties\", () => {\n    //parse the response json and test three properties\n    const responseJson = pm.response.json();\n    pm.expect(responseJson.type).to.eql('vip');\n    pm.expect(responseJson.name).to.be.a('string');\n    pm.expect(responseJson.id).to.have.lengthOf(1);\n});\n```\n\nIf any of the contained assertions fails, the test as a whole will fail. All assertions must be successful for the test to pass.",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "post"
+            ],
+            "host": [
+              "postman-echo",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.37.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "2c4a76f2-33dc-4ca6-93e5-caf6996f0f1f",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "postman-echo.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Cookie",
+              "value": "sails.sid=s%3Az_NHoCsS6aWNC1KpswuDEbR8VB2SbB3P.vefyyL1Lry58CAXyLDNySfKtFtAqEzBhw46DDbaqHcI",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "380",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "formdata",
+            "formdata": [
+              {
+                "key": "name",
+                "value": "Melania Trump",
+                "type": "text"
+              },
+              {
+                "key": "type",
+                "value": "vip",
+                "type": "text"
+              },
+              {
+                "key": "id",
+                "value": "5",
+                "type": "text"
+              }
+            ]
+          }
+        },
+        "response": {
+          "id": "7243e7f1-5507-481d-be2b-50c143a3790e",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 07 Aug 2024 05:34:24 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "851"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Server",
+              "value": "nginx/1.25.3"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"353-PTNcqv3eouNrouLNC9XhiNaJfqc\""
+            },
+            {
+              "key": "set-cookie",
+              "value": "sails.sid=s%3AfirXVgSmZqwvuyhA6DeFGgM7WND28DJW.aR0uNaSIdxaK1jnXBb%2Be5gbuTNrx3gJBCbuzP6ptuJ8; Path=/; HttpOnly"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              10,
+              32,
+              32,
+              34,
+              97,
+              114,
+              103,
+              115,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              100,
+              97,
+              116,
+              97,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              102,
+              105,
+              108,
+              101,
+              115,
+              34,
+              58,
+              32,
+              123,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              102,
+              111,
+              114,
+              109,
+              34,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              110,
+              97,
+              109,
+              101,
+              34,
+              58,
+              32,
+              34,
+              77,
+              101,
+              108,
+              97,
+              110,
+              105,
+              97,
+              32,
+              84,
+              114,
+              117,
+              109,
+              112,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              116,
+              121,
+              112,
+              101,
+              34,
+              58,
+              32,
+              34,
+              118,
+              105,
+              112,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              105,
+              100,
+              34,
+              58,
+              32,
+              34,
+              53,
+              34,
+              10,
+              32,
+              32,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              104,
+              101,
+              97,
+              100,
+              101,
+              114,
+              115,
+              34,
+              58,
+              32,
+              123,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              104,
+              111,
+              115,
+              116,
+              34,
+              58,
+              32,
+              34,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              101,
+              99,
+              104,
+              111,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              114,
+              101,
+              113,
+              117,
+              101,
+              115,
+              116,
+              45,
+              115,
+              116,
+              97,
+              114,
+              116,
+              34,
+              58,
+              32,
+              34,
+              116,
+              61,
+              49,
+              55,
+              50,
+              51,
+              48,
+              48,
+              56,
+              56,
+              54,
+              52,
+              46,
+              49,
+              57,
+              49,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              99,
+              111,
+              110,
+              116,
+              101,
+              110,
+              116,
+              45,
+              108,
+              101,
+              110,
+              103,
+              116,
+              104,
+              34,
+              58,
+              32,
+              34,
+              51,
+              56,
+              48,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              102,
+              111,
+              114,
+              119,
+              97,
+              114,
+              100,
+              101,
+              100,
+              45,
+              112,
+              114,
+              111,
+              116,
+              111,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              115,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              102,
+              111,
+              114,
+              119,
+              97,
+              114,
+              100,
+              101,
+              100,
+              45,
+              112,
+              111,
+              114,
+              116,
+              34,
+              58,
+              32,
+              34,
+              52,
+              52,
+              51,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              120,
+              45,
+              97,
+              109,
+              122,
+              110,
+              45,
+              116,
+              114,
+              97,
+              99,
+              101,
+              45,
+              105,
+              100,
+              34,
+              58,
+              32,
+              34,
+              82,
+              111,
+              111,
+              116,
+              61,
+              49,
+              45,
+              54,
+              54,
+              98,
+              51,
+              48,
+              55,
+              54,
+              48,
+              45,
+              52,
+              98,
+              54,
+              51,
+              50,
+              102,
+              101,
+              50,
+              54,
+              55,
+              99,
+              97,
+              100,
+              102,
+              51,
+              98,
+              55,
+              52,
+              49,
+              48,
+              53,
+              53,
+              54,
+              57,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              117,
+              115,
+              101,
+              114,
+              45,
+              97,
+              103,
+              101,
+              110,
+              116,
+              34,
+              58,
+              32,
+              34,
+              80,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              82,
+              117,
+              110,
+              116,
+              105,
+              109,
+              101,
+              47,
+              55,
+              46,
+              51,
+              55,
+              46,
+              49,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              97,
+              99,
+              99,
+              101,
+              112,
+              116,
+              34,
+              58,
+              32,
+              34,
+              42,
+              47,
+              42,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              99,
+              97,
+              99,
+              104,
+              101,
+              45,
+              99,
+              111,
+              110,
+              116,
+              114,
+              111,
+              108,
+              34,
+              58,
+              32,
+              34,
+              110,
+              111,
+              45,
+              99,
+              97,
+              99,
+              104,
+              101,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              116,
+              111,
+              107,
+              101,
+              110,
+              34,
+              58,
+              32,
+              34,
+              50,
+              99,
+              52,
+              97,
+              55,
+              54,
+              102,
+              50,
+              45,
+              51,
+              51,
+              100,
+              99,
+              45,
+              52,
+              99,
+              97,
+              54,
+              45,
+              57,
+              51,
+              101,
+              53,
+              45,
+              99,
+              97,
+              102,
+              54,
+              57,
+              57,
+              54,
+              102,
+              48,
+              102,
+              49,
+              102,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              97,
+              99,
+              99,
+              101,
+              112,
+              116,
+              45,
+              101,
+              110,
+              99,
+              111,
+              100,
+              105,
+              110,
+              103,
+              34,
+              58,
+              32,
+              34,
+              103,
+              122,
+              105,
+              112,
+              44,
+              32,
+              100,
+              101,
+              102,
+              108,
+              97,
+              116,
+              101,
+              44,
+              32,
+              98,
+              114,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              99,
+              111,
+              110,
+              116,
+              101,
+              110,
+              116,
+              45,
+              116,
+              121,
+              112,
+              101,
+              34,
+              58,
+              32,
+              34,
+              109,
+              117,
+              108,
+              116,
+              105,
+              112,
+              97,
+              114,
+              116,
+              47,
+              102,
+              111,
+              114,
+              109,
+              45,
+              100,
+              97,
+              116,
+              97,
+              59,
+              32,
+              98,
+              111,
+              117,
+              110,
+              100,
+              97,
+              114,
+              121,
+              61,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              45,
+              56,
+              57,
+              49,
+              53,
+              49,
+              48,
+              49,
+              49,
+              54,
+              48,
+              50,
+              52,
+              51,
+              48,
+              48,
+              49,
+              57,
+              55,
+              57,
+              56,
+              54,
+              50,
+              51,
+              48,
+              34,
+              44,
+              10,
+              32,
+              32,
+              32,
+              32,
+              34,
+              99,
+              111,
+              111,
+              107,
+              105,
+              101,
+              34,
+              58,
+              32,
+              34,
+              115,
+              97,
+              105,
+              108,
+              115,
+              46,
+              115,
+              105,
+              100,
+              61,
+              115,
+              37,
+              51,
+              65,
+              122,
+              95,
+              78,
+              72,
+              111,
+              67,
+              115,
+              83,
+              54,
+              97,
+              87,
+              78,
+              67,
+              49,
+              75,
+              112,
+              115,
+              119,
+              117,
+              68,
+              69,
+              98,
+              82,
+              56,
+              86,
+              66,
+              50,
+              83,
+              98,
+              66,
+              51,
+              80,
+              46,
+              118,
+              101,
+              102,
+              121,
+              121,
+              76,
+              49,
+              76,
+              114,
+              121,
+              53,
+              56,
+              67,
+              65,
+              88,
+              121,
+              76,
+              68,
+              78,
+              121,
+              83,
+              102,
+              75,
+              116,
+              70,
+              116,
+              65,
+              113,
+              69,
+              122,
+              66,
+              104,
+              119,
+              52,
+              54,
+              68,
+              68,
+              98,
+              97,
+              113,
+              72,
+              99,
+              73,
+              34,
+              10,
+              32,
+              32,
+              125,
+              44,
+              10,
+              32,
+              32,
+              34,
+              106,
+              115,
+              111,
+              110,
+              34,
+              58,
+              32,
+              110,
+              117,
+              108,
+              108,
+              44,
+              10,
+              32,
+              32,
+              34,
+              117,
+              114,
+              108,
+              34,
+              58,
+              32,
+              34,
+              104,
+              116,
+              116,
+              112,
+              115,
+              58,
+              47,
+              47,
+              112,
+              111,
+              115,
+              116,
+              109,
+              97,
+              110,
+              45,
+              101,
+              99,
+              104,
+              111,
+              46,
+              99,
+              111,
+              109,
+              47,
+              112,
+              111,
+              115,
+              116,
+              34,
+              10,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 310,
+          "responseSize": 851
+        },
+        "id": "1ef9a67f-b047-4bdf-8f01-dd8ad368e17b",
+        "assertions": [
+          {
+            "assertion": "The response has all properties",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "The response has all properties",
+              "message": "expected 'Melania Trump' to be a ",
+              "stack": "AssertionError: expected 'Melania Trump' to be a \n   at Object.eval sandbox-script.js:1:3)"
+            }
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 1933
+    },
+    "failures": [
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "Status code is 200",
+          "message": "expected response to have status code 201 but got 200",
+          "stack": "AssertionError: expected response to have status code 201 but got 200\n   at Object.eval sandbox-script.js:1:1)",
+          "checksum": "367b277f1ef6dd5c2a581605f9a131a0",
+          "id": "a4b3e49c-7473-45ad-a460-9cc7b87ce076",
+          "timestamp": 1723008863000,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 1,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "2fafed03-a8da-40fc-bd07-37298e083349",
+          "name": "Getting started with tests",
+          "request": {
+            "description": {
+              "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "get"
+              ],
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bf9ab49a-9859-4ff6-930f-0ca2129aec61",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "  pm.response.to.have.status(201);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "e1588dd5-332c-4abf-97c8-29156ac22e8b"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "cba3ec2e-11f9-4956-b834-a713941cc6da",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "63b416c7-8893-4ae9-8e1a-5e2645b305b3"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "id": "70e8f71b-1451-4082-a87b-49f09bd3a190",
+          "name": "New Folder",
+          "item": [
+            {
+              "id": "2fafed03-a8da-40fc-bd07-37298e083349",
+              "name": "Getting started with tests",
+              "request": {
+                "description": {
+                  "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "get"
+                  ],
+                  "host": [
+                    "postman-echo",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "bf9ab49a-9859-4ff6-930f-0ca2129aec61",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "  pm.response.to.have.status(201);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "e1588dd5-332c-4abf-97c8-29156ac22e8b"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "cba3ec2e-11f9-4956-b834-a713941cc6da",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "63b416c7-8893-4ae9-8e1a-5e2645b305b3"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fda7b05f-6bb6-4a4a-9d84-38aa2fce88b5",
+              "name": "Getting started with tests",
+              "request": {
+                "description": {
+                  "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "get"
+                  ],
+                  "host": [
+                    "postman-echo",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "bbc11d72-de5c-4f65-a019-c42f85e5f591",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test.skip('Skipped Test', () =>{\r",
+                      "    pm.response.to.have.status(401);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "d4577ff6-73ba-4391-8547-435081418075"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "3863e3cd-c6dc-47b4-9234-0b6c1895c65d",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "11189f2f-d96d-4815-bc8d-90263cb26611"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "1ef9a67f-b047-4bdf-8f01-dd8ad368e17b",
+              "name": "Using multiple assertions",
+              "request": {
+                "description": {
+                  "content": "Your tests can include multiple assertions as part of a single test—you can use this to group together related assertions.\n\n```\npm.test(\"The response has all properties\", () => {\n    //parse the response json and test three properties\n    const responseJson = pm.response.json();\n    pm.expect(responseJson.type).to.eql('vip');\n    pm.expect(responseJson.name).to.be.a('string');\n    pm.expect(responseJson.id).to.have.lengthOf(1);\n});\n```\n\nIf any of the contained assertions fails, the test as a whole will fail. All assertions must be successful for the test to pass.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "post"
+                  ],
+                  "host": [
+                    "postman-echo",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Melania Trump",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type",
+                      "value": "vip",
+                      "type": "text"
+                    },
+                    {
+                      "key": "id",
+                      "value": "5",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e1b3825e-062c-4629-9b8a-6664ae8b5ff1",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"The response has all properties\", () => {\r",
+                      "    //parse the response json and test three properties\r",
+                      "    const responseJson = pm.response.json();\r",
+                      "    pm.expect(responseJson.form.type).to.eql('vip');\r",
+                      "    pm.expect(responseJson.form.name).to.be.a('');\r",
+                      "    pm.expect(responseJson.form.id).to.have.lengthOf(1);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "4b7358af-ff3b-457e-8413-5dd560f8f3f0"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "0e4bc0b1-b39a-4464-898e-8ec3c105664e",
+                    "type": "text/javascript",
+                    "exec": [],
+                    "_lastExecutionId": "5cca5c0d-7be9-47ba-979f-b225f033895a"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        },
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 3,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "9e5dad42-8362-407b-b2ab-2ee55df798b1",
+          "httpRequestId": "4dcd30dd-44bd-4de5-ae46-af08e7358b7b",
+          "scriptId": "bf9ab49a-9859-4ff6-930f-0ca2129aec61",
+          "execution": "e1588dd5-332c-4abf-97c8-29156ac22e8b"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "The response has all properties",
+          "message": "expected 'Melania Trump' to be a ",
+          "stack": "AssertionError: expected 'Melania Trump' to be a \n   at Object.eval sandbox-script.js:1:3)",
+          "checksum": "5183b441a6c58233b9220d106fcfa0cc",
+          "id": "076051b9-7cf8-48f0-9a99-cf399e6bc6cb",
+          "timestamp": 1723008863857,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 3,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "1ef9a67f-b047-4bdf-8f01-dd8ad368e17b",
+          "name": "Using multiple assertions",
+          "request": {
+            "description": {
+              "content": "Your tests can include multiple assertions as part of a single test—you can use this to group together related assertions.\n\n```\npm.test(\"The response has all properties\", () => {\n    //parse the response json and test three properties\n    const responseJson = pm.response.json();\n    pm.expect(responseJson.type).to.eql('vip');\n    pm.expect(responseJson.name).to.be.a('string');\n    pm.expect(responseJson.id).to.have.lengthOf(1);\n});\n```\n\nIf any of the contained assertions fails, the test as a whole will fail. All assertions must be successful for the test to pass.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "post"
+              ],
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Melania Trump",
+                  "type": "text"
+                },
+                {
+                  "key": "type",
+                  "value": "vip",
+                  "type": "text"
+                },
+                {
+                  "key": "id",
+                  "value": "5",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e1b3825e-062c-4629-9b8a-6664ae8b5ff1",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.test(\"The response has all properties\", () => {\r",
+                  "    //parse the response json and test three properties\r",
+                  "    const responseJson = pm.response.json();\r",
+                  "    pm.expect(responseJson.form.type).to.eql('vip');\r",
+                  "    pm.expect(responseJson.form.name).to.be.a('');\r",
+                  "    pm.expect(responseJson.form.id).to.have.lengthOf(1);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "4b7358af-ff3b-457e-8413-5dd560f8f3f0"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "0e4bc0b1-b39a-4464-898e-8ec3c105664e",
+                "type": "text/javascript",
+                "exec": [],
+                "_lastExecutionId": "5cca5c0d-7be9-47ba-979f-b225f033895a"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "id": "70e8f71b-1451-4082-a87b-49f09bd3a190",
+          "name": "New Folder",
+          "item": [
+            {
+              "id": "2fafed03-a8da-40fc-bd07-37298e083349",
+              "name": "Getting started with tests",
+              "request": {
+                "description": {
+                  "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "get"
+                  ],
+                  "host": [
+                    "postman-echo",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "bf9ab49a-9859-4ff6-930f-0ca2129aec61",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {\r",
+                      "  pm.response.to.have.status(201);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "e1588dd5-332c-4abf-97c8-29156ac22e8b"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "cba3ec2e-11f9-4956-b834-a713941cc6da",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "63b416c7-8893-4ae9-8e1a-5e2645b305b3"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "fda7b05f-6bb6-4a4a-9d84-38aa2fce88b5",
+              "name": "Getting started with tests",
+              "request": {
+                "description": {
+                  "content": "To try writing a test script for the first time, open a request in your Postman app and open the **Tests** tab. Enter the following JavaScript code:\n\n```\npm.test(\"Status code is 200\", function () {\n  pm.response.to.have.status(200);\n});\n```\n\nThis code uses the `pm` library to run the `test` method. The text string will appear in the test output. The function inside the test represents an assertion. Postman tests can use [Chai Assertion Library BDD](https://www.chaijs.com/api/bdd/) syntax, which provides options to optimize how readable your tests are to you and your collaborators. In this case, the code uses BDD chains `to.have` to express the assertion.\n\nThis test checks the response code returned by the API. If the response code is `200`, the test will pass, otherwise it will fail. Click **Send** and check the **Test Results** output in the response area.\n\nTry changing the status code in the assertion code and running again to see how test results appear differently when they pass or fail.\n\nYou can structure your test assertions in a variety of ways to suit your logic and preference in terms of how you want the results to output. The following code is an alternative way of achieving the same test as the one above using the `expect` syntax:\n\n```\npm.test(\"Status code is 200\", () => {\n  pm.expect(pm.response.code).to.eql(200);\n});\n```\n> Refer to the [Chai Docs](https://www.chaijs.com/api/bdd/) for a complete overview of assertion syntax options.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "get"
+                  ],
+                  "host": [
+                    "postman-echo",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "bbc11d72-de5c-4f65-a019-c42f85e5f591",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test.skip('Skipped Test', () =>{\r",
+                      "    pm.response.to.have.status(401);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "d4577ff6-73ba-4391-8547-435081418075"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "3863e3cd-c6dc-47b4-9234-0b6c1895c65d",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "11189f2f-d96d-4815-bc8d-90263cb26611"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "1ef9a67f-b047-4bdf-8f01-dd8ad368e17b",
+              "name": "Using multiple assertions",
+              "request": {
+                "description": {
+                  "content": "Your tests can include multiple assertions as part of a single test—you can use this to group together related assertions.\n\n```\npm.test(\"The response has all properties\", () => {\n    //parse the response json and test three properties\n    const responseJson = pm.response.json();\n    pm.expect(responseJson.type).to.eql('vip');\n    pm.expect(responseJson.name).to.be.a('string');\n    pm.expect(responseJson.id).to.have.lengthOf(1);\n});\n```\n\nIf any of the contained assertions fails, the test as a whole will fail. All assertions must be successful for the test to pass.",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "post"
+                  ],
+                  "host": [
+                    "postman-echo",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Melania Trump",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type",
+                      "value": "vip",
+                      "type": "text"
+                    },
+                    {
+                      "key": "id",
+                      "value": "5",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "e1b3825e-062c-4629-9b8a-6664ae8b5ff1",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.test(\"The response has all properties\", () => {\r",
+                      "    //parse the response json and test three properties\r",
+                      "    const responseJson = pm.response.json();\r",
+                      "    pm.expect(responseJson.form.type).to.eql('vip');\r",
+                      "    pm.expect(responseJson.form.name).to.be.a('');\r",
+                      "    pm.expect(responseJson.form.id).to.have.lengthOf(1);\r",
+                      "});"
+                    ],
+                    "_lastExecutionId": "4b7358af-ff3b-457e-8413-5dd560f8f3f0"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "0e4bc0b1-b39a-4464-898e-8ec3c105664e",
+                    "type": "text/javascript",
+                    "exec": [],
+                    "_lastExecutionId": "5cca5c0d-7be9-47ba-979f-b225f033895a"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        },
+        "cursor": {
+          "ref": "3e99b4e9-8fa3-4c04-8261-5e617f182550",
+          "length": 3,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "158750dc-ff3e-4bd1-85ed-4b607c884007",
+          "scriptId": "e1b3825e-062c-4629-9b8a-6664ae8b5ff1",
+          "execution": "4b7358af-ff3b-457e-8413-5dd560f8f3f0"
+        }
+      }
+    ],
+    "error": null
+  }
+}
